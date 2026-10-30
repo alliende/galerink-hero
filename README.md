@@ -1,9 +1,9 @@
 # Galerink — sitio comercial
 
-Sitio comercial estático de Galerink. El trabajo de implementación se prepara mediante pull requests antes de publicarse.
+Sitio estático de Galerink. Cambios mediante PR, revisiones y validaciones.
 
-- `main`: rama de producción (merge autorizado).
-- `feature/*`: cambios propuestos en PR.
-- Cloudflare Pages: hosting previsto; configurar cuenta y credenciales antes de habilitar producción.
+- `main`: producción, publicar mediante **integración Git nativa Cloudflare Pages** después de merge autorizado.
+- `feature/*`: cambios y previews sin afectar producción.
+- GitHub Actions: **solo CI**, sin secretos ni deploy manual a Cloudflare.
 
-La política de despliegue y los pendientes de lanzamiento se documentan en el PR inicial.
+Configurar Cloudflare usando [`docs/CLOUDFLARE.md`](docs/CLOUDFLARE.md). Los assets de la última versión deben incorporarse antes de fusionar el PR. Las tareas comerciales y legales pendientes están en `docs/BACKLOG-LANZAMIENTO.md`.
