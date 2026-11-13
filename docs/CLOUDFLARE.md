@@ -43,3 +43,11 @@ El comando `check` es deliberadamente bloqueante: si faltan recursos no habrá p
 - El nombre del proyecto Pages puede ser distinto del repositorio: no es un problema cuando la integración Git está configurada.
 
 Documentación: https://developers.cloudflare.com/pages/configuration/git-integration/
+
+## Analítica del hero
+
+Configurar `MIXPANEL_PROJECT_TOKEN` en **Settings → Variables and Secrets** del proyecto Pages. Production usa Galerink (4072833) y Preview usa Lab (3428049). Usar el token de tracking del SDK web. El build lo incluye en el HTML público, así que nunca usar un API Secret ni una credencial de servicio. Sin variable, el sitio se construye con la analítica desactivada.
+
+En el preview abrir `/?utm_source=instagram&utm_medium=social&utm_campaign=hero_qa` y pulsar «Prueba gratis». En Live View de Lab verificar `hero_viewed` y `hero_trial_clicked` con `surface=hero`, las mismas UTM y el mismo ID anónimo. El clic incluye `cta_location`. Repetir sin UTM y con «Iniciar sesión» para comprobar que solo se registra la visita. Probar el enlace también con el SDK bloqueado.
+
+En Galerink, crear un embudo de usuarios únicos `hero_viewed` → `hero_trial_clicked`, con `utm_source=instagram` en el primer paso y una ventana de 30 minutos. Para comparar la ubicación de los botones, desglosar el evento de clic por `cta_location`.
